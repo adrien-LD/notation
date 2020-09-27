@@ -19,7 +19,24 @@
 				"command": "notation.helloWorld",
 				"title": "Hello World"
 			}
-		]
+		],
+		"keybindings": [
+			{
+				"command": "notation.helloWorld",
+				"key": "ctrl+F10",
+				"mac": "ctrl+F10",
+				"when": "editorTextFocus"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorFocus",
+					"command": "notation.helloWorld",
+					"group": "navigation"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
