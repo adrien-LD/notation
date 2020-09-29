@@ -1,3 +1,4 @@
+import { S_IFIFO } from 'constants';
 import * as vscode from 'vscode';
 
 /**
@@ -18,25 +19,41 @@ function getNotationString(textEditor: vscode.TextEditor): string {
     const endPosition: vscode.Position = new vscode.Position(line + count, 0);
     // 得到该行文本
     lintText = document.getText(new vscode.Range(startPosition, endPosition));
-
   }
-  console.log(count);
   // 得到最终需要的文本
-   const startPosition: vscode.Position = new vscode.Position(line, 0);
-   const endPosition: vscode.Position = new vscode.Position(line + count, 0);
-   const finalText: string = document.getText(new vscode.Range(startPosition, endPosition));
+  const startPosition: vscode.Position = new vscode.Position(line, 0);
+  const endPosition: vscode.Position = new vscode.Position(line + count, 0);
+  const finalText: string = document.getText(
+    new vscode.Range(startPosition, endPosition)
+  );
 
-   const strArray: RegExpMatchArray | null = finalText.match(/\(\{([\s\S]*)\}\)/);
-   const str:string = strArray[1]; 
-   const finalStr:string = str.replace(/[(\r\n)|(\n)|(\s)]*/gm, '');
-   console.log(finalStr);
-   const finalArray: Array<string> = finalStr.split(',');
-   console.log(finalArray);
+  const strArray: RegExpMatchArray | null = finalText.match(
+    /\(\{([\s\S]*)\}\)/
+  );
+  const str: string = strArray[1];
+  const finalStr: string = str.replace(/[(\r\n)|(\n)|(\s)]*/gm, '');
+  console.log(finalStr);
+  const finalArray: Array<string> = finalStr.split(',');
+  console.log(finalArray);
+  let finalArr: Array<string> = [];
+  let other: string = '';
+  // 格式化得到最后输出的字符串
+  for (let i = 0; i < finalArray.length; i++) {
+    if (finalArray[i] !== '') {
+      if (finalArray[i].includes('...')) {
+        other = `{[other:string]: any}`;
+      } else {
+        finalArr.push(` * ${finalArray[i]}: any`);
+      }
+    }
+  }
+  console.log(other);
+  console.log(finalArr);
   return `
 /**
  * @param {{
- ${finalArray.forEach((item) => '* ${item}: any')}
- * }}
+${finalArr.join('\n')}
+ * }${other === '' ? '' : ` | ${other}`}} prop
  *
  */`;
 }
