@@ -3,6 +3,7 @@
 	"displayName": "notation",
 	"description": "自动插入jsDoc注释，主要是为了解析object类型参数",
 	"version": "0.0.1",
+	"publisher": "adrienld",
 	"engines": {
 		"vscode": "^1.49.0"
 	},
@@ -31,7 +32,7 @@
 		"menus": {
 			"editor/context": [
 				{
-					"when": "editorFocus",
+					"when": "editorFocus && resourceLangId == javascriptreact || editorFocus && resourceLangId == javascript",
 					"command": "notation.insertNotation",
 					"group": "navigation"
 				}
