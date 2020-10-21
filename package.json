@@ -2,7 +2,7 @@
 	"name": "notation",
 	"displayName": "notation",
 	"description": "自动插入jsDoc注释，主要是为了解析object类型参数",
-	"version": "0.0.2",
+	"version": "1.0.0",
 	"publisher": "adrienld",
 	"repository": {
 		"type": "git",

@@ -21,7 +21,7 @@ function getNotationString(textEditor: vscode.TextEditor): string {
 /**
  * @param {{
 ${finalArr.join('\n')}
- * } | ${other}} prop
+ * }${other}} prop
  *
  */`;
   }

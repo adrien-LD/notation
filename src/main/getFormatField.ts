@@ -13,7 +13,7 @@ export default function getFormatField(finalArray: string[]): FormatField {
     if (finalArray[i] !== '') {
       if (finalArray[i].includes('...')) {
         const str: string = finalArray[i].replace(/.../, '');
-        other = `{[other:string]: any}`;
+        other = ` | {[other:string]: any}`;
       } else if (finalArray[i].includes('=')) {
         const [param, value] = finalArray[i].split('=');
         let { name, type, defaultValue = '' } = inferredTypeOfDefaultValue(
