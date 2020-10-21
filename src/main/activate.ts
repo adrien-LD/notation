@@ -19,9 +19,9 @@ function getNotationString(textEditor: vscode.TextEditor): string {
    const { finalArr, other} = getFormatField(finalArray);
     return `
 /**
- * @param {object} props
+ * @param {{
 ${finalArr.join('\n')}
-${other}
+ * } | ${other}} prop
  *
  */`;
   }

@@ -9,7 +9,7 @@ export function inferredTypeOfDefaultValue(
   param: string,
   defaultValue: string
 ): Param {
-  let type = '*';
+  let type = 'any';
 
   if (defaultValue === 'true' || defaultValue === 'false') {
     type = 'boolean';
@@ -20,7 +20,7 @@ export function inferredTypeOfDefaultValue(
   }
 
   // 如果通过默认值没能推算出类型，再调用一次使用参数名判断
-  if (type === '*') {
+  if (type === 'any') {
     const { type: typeCopy } = inferredTypeOfParamName(param);
     type = typeCopy;
   }
@@ -33,7 +33,7 @@ export function inferredTypeOfDefaultValue(
 
 // 根据参数名字推算类型
 export function inferredTypeOfParamName(param: string): Param {
-  let type = '*';
+  let type = 'any';
 
   // 如果是on开头的参数 判断为函数，直接返回
   if (/^on[.*]/.test(param)) {
@@ -41,7 +41,7 @@ export function inferredTypeOfParamName(param: string): Param {
   } else if (/^is[.*]/.test(param)) {
     type = 'boolean';
   } else if (param === 'children') {
-    type = 'React.ReactNode';
+    type = 'ReactNode';
   } else if (param.toLowerCase() === 'classname') {
     type = 'string';
   }
