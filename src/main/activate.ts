@@ -12,7 +12,6 @@ function getNotationString(textEditor: vscode.TextEditor): string {
   const document: vscode.TextDocument = textEditor.document;
   const line = getFoucsLineNumber(textEditor);
   // 截取到函数的参数
-
   const finalArray = getParams(document, line);
   
   if (finalArray.length) {
