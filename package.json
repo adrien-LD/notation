@@ -4,6 +4,10 @@
 	"description": "自动插入jsDoc注释，主要是为了解析object类型参数",
 	"version": "0.0.2",
 	"publisher": "adrienld",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/adrien-LD/notation.git"
+	},
 	"engines": {
 		"vscode": "^1.49.0"
 	},
