@@ -4,3 +4,4 @@
 
 # 使用
 在需要添加注释的函数上方右键选择`insert notation`命令
+![](./img/demo.gif)
